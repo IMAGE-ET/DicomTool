@@ -2,7 +2,7 @@
 """
 This module allows the displaying DICOM images in a frame and adding rectangular annotations with a label to the image.
 The annotations can then be exported as a JSON text file or the full canvas can be exported as a ghostscrip (.ps) file to be viewed indepentendly.
-The annotations for a file can be imported back to vizualize them again.
+The annotations for can be imported back to vizualize them again.
 
 """
 
