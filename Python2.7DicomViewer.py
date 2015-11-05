@@ -11,8 +11,8 @@ from Tkinter import *
 import tkFileDialog
 import tkMessageBox
 
-from pydicom import dicomio
-import pydicom.contrib.pydicom_Tkinter as pydicom_Tkinter # from https://github.com/darcymason/pydicom/blob/dev/pydicom/contrib/pydicom_Tkinter.py
+import dicom
+import dicom.contrib.pydicom_Tkinter as pydicom_Tkinter # from https://github.com/darcymason/pydicom/blob/dev/pydicom/contrib/pydicom_Tkinter.py
 import json
 
 from AnnotationObject import AnnotationObject
@@ -196,7 +196,7 @@ class DicomViewer(Frame):
         dicomImage = tkFileDialog.askopenfilename(initialdir = "C:\"", title = "choose DICOM file", filetypes = (("DICOM files","*.dcm"),("all files","*.*")))
         
         # Read file into pydicom
-        dFile = dicomio.read_file(dicomImage)
+        dFile = dicom.read_file(dicomImage)
 
         # Get the Tkinter photo image with pydicom_Tkinter
         dicomImage = pydicom_Tkinter.get_tkinter_photoimage_from_pydicom_image(dFile)
