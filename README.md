@@ -25,6 +25,7 @@ Then `git clone` this repo, `cd` into the root, execute:
 Running
 ------------
 > activate dicomtool
+
 > python Python2.7DicomViewer.py
 
 Documentation
