@@ -1,0 +1,6 @@
+name: dicomtool
+dependencies:
+  - python=2.7
+  - numpy
+  - pip:
+    - pydicom
