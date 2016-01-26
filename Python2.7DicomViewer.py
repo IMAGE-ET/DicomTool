@@ -83,7 +83,6 @@ class DicomViewer(Frame):
         menu.add_command(label="Remove All", command=self.removeAllWidgets)
         menu.add_command(label="Undo Last Annotation", command=self.removeLastWidget)
         # Quit Menu
-        menu = Menu(self.menubar, tearoff=0)
         self.menubar.add_command(label="Quit Viewer", command=quit)
 
         self.master.config(menu=self.menubar)
@@ -160,7 +159,7 @@ class DicomViewer(Frame):
         self.isDrawingRectangle = False
         pass
 
-    def quit():
+    def quit(self):
         global root
         root.quit()
 
@@ -267,13 +266,12 @@ class DicomViewer(Frame):
         self.annotationList = json.loads(jsonString, object_hook=helperFunctions.JsonDictToAnnotationObject)
 
         # scale the annotations to match the current object
-        #scaledAnnotationList = map(helperFunctions.scaleAnnotationObject, self.annotationList)
         scaledAnnotationList = [helperFunctions.scaleAnnotationObject(item, self.zoomScale) for item in self.annotationList]
 
         # Add annotations to canvas
         for annotationItem in scaledAnnotationList:
             # make a rectangle and add to canvas
-            newRectangle = self.canvas.create_rectangle(annotationItem.startX, annotationItem.startY, annotationItem.endX, annotationItem.endY)
+            self.canvas.create_rectangle(annotationItem.startX, annotationItem.startY, annotationItem.endX, annotationItem.endY)
             # add the label
             xDiff = int(abs(annotationItem.endX - annotationItem.startX) / 2)
             labelX = annotationItem.startX + xDiff if annotationItem.startX < annotationItem.endX else annotationItem.endX + xDiff

@@ -1,17 +1,17 @@
 import unittest
 import json
 
-from AnnotationObject import AnnotationObject
 from HelperFunctions import HelperFunctions
+
 
 class TestStringMethods(unittest.TestCase):
 
-    def test_JsonDictToAnnotationObject(self):
+    def test_Json_dict_to_annotation_object(self):
         """
             test JSON to annotation list method
         """
-        helperFunctions = HelperFunctions()
-        jsonString = """[
+        helper_functions = HelperFunctions()
+        json_string = """[
                 {
                     "endX": 1300, 
                     "endY": 592, 
@@ -21,17 +21,17 @@ class TestStringMethods(unittest.TestCase):
                 }
         ]"""
 
-        annotationTestList = json.loads(jsonString, object_hook=helperFunctions.JsonDictToAnnotationObject)
-        self.assertEqual(annotationTestList[0].title, 'bone')
-        self.assertEqual(annotationTestList[0].endX, 1300)
+        annontation_test_list = json.loads(json_string, object_hook=helper_functions.JsonDictToAnnotationObject)
+        self.assertEqual(annontation_test_list[0].title, 'bone')
+        self.assertEqual(annontation_test_list[0].endX, 1300)
 
-    def test_getZoomScale(self):
+    def test_get_zoom_zcale(self):
         """
             test zoom scaling
         """
-        helperFunctions = HelperFunctions()
-        zoomScale = helperFunctions.getZoomScale(80, 35, 40, 40)
-        self.assertEqual(zoomScale, 2)
+        helper_functions = HelperFunctions()
+        zoom_scale = helper_functions.getZoomScale(80, 35, 40, 40)
+        self.assertEqual(zoom_scale, 2)
 
 if __name__ == '__main__':
     unittest.main()
